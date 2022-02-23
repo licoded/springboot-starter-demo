@@ -1,7 +1,9 @@
 package site.licoded.starter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import site.licoded.starter.entity.SwaggerConfigEntity;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -28,13 +30,20 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build();
     }
+
+    @Autowired
+    private SwaggerConfigEntity swaggerConfigBean;
     
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("XX项目接口文档")
-                .description("XX项目描述")
-                .contact(new Contact("作者", "作者URL", "作者Email"))
-                .version("1.0")
+                .title(swaggerConfigBean.getTitle())
+                .description(swaggerConfigBean.getDescription())
+                .contact(new Contact(
+                        swaggerConfigBean.getContact().getName(),
+                        swaggerConfigBean.getContact().getUrl(),
+                        swaggerConfigBean.getContact().getEmail()
+                ))
+                .version(swaggerConfigBean.getVersion())
                 .build();
     }
 }
