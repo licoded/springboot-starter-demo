@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  site.licoded.starter.bean.SwaggerConfigBeanAutoConfiguration
