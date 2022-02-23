@@ -1,4 +1,4 @@
-package site.licoded.demo;
+package site.licoded.starter;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
